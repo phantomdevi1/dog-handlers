@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Администратор
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $login;
-            header("Location: admin_home.php"); // Перенаправляем на страницу администратора
+            header("Location: admin_home.php"); 
         } else {
             // Пользователь без прав администратора
             $_SESSION['loggedin'] = true;
