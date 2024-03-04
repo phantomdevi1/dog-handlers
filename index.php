@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: home.php");
         }
     } else {
-        echo "Неверный логин или пароль.";
+        echo "<script>alert('Неверный логин или пароль.');</script>";
     }
 }
 

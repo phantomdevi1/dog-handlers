@@ -122,8 +122,6 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
-
-
     </div>
     </div>
     <script>
@@ -131,20 +129,7 @@ $conn->close();
         document.querySelector('.logout_block').style.display = 'block';
     });
 </script>
-  </body>
-</html>
 <?php
-if(isset($_POST['logout'])){
-    // Очищаем сессию
-    $_SESSION = array();
-
-    // Уничтожаем сессию
-    session_destroy();
-
-    // Перенаправляем пользователя на index.php
-    header("Location: index.php");
-    exit;
-}
 if(isset($_POST['save_changes'])){
     include 'config.php'; // Подключаем файл с настройками базы данных
     
@@ -162,3 +147,15 @@ if(isset($_POST['save_changes'])){
     $conn->close();
 }
 ?>
+<?php
+if(isset($_POST['logout'])){
+
+  $_SESSION = array();
+
+  session_destroy();
+  header("Location: index.php");
+  exit;
+}
+?>
+</body>
+</html>
