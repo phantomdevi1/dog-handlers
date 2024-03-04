@@ -63,12 +63,12 @@ if ($result->num_rows > 0) {
     echo "<form action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "' method='post'>";
     echo "<table class='table_pets-table' border='0'>";
     echo "<tr class='tr_pets'>
-    <th>Кинолог</th>
+    <th class='fourteen_none_display'>Кинолог</th>
     <th>Питомец</th>
     <th>Задание</th>
-    <th>Дата начала</th>
-    <th>Дата окончания</th>
-    <th>Статус</th>
+    <th class='seventeen_none_display'>Дата начала</th>
+    <th class='seventeen_none_display'>Дата окончания</th>
+    <th class='seventeen_none_display'>Статус</th>
     </tr>";
     while($row = $result->fetch_assoc()) {
         // Получаем имя кинолога
@@ -104,17 +104,17 @@ if ($result->num_rows > 0) {
         }
 
         echo "<tr>";
-        echo "<td class='td_pets'>" . $handler_name . "</td>";
+        echo "<td class='td_pets fourteen_none_display'>" . $handler_name . "</td>";
         echo "<td class='td_pets'>" . $dog_name . "</td>";
         echo "<td class='td_pets'>" . $row["task"] . "</td>";
-        echo "<td class='td_pets'>" . $row["start_date"] . "</td>";
-        echo "<td class='td_pets'><input type='date' name='end_date[" . $row['dog_id'] . "]' value='" . $row["end_date"] . "'></td>";
-        echo "<td class='td_pets " . $status_class . "'>" . $status_text . "</td>";
+        echo "<td class='td_pets seventeen_none_display'>" . $row["start_date"] . "</td>";
+        echo "<td class='td_pets seventeen_none_display'><input type='date' name='end_date[" . $row['dog_id'] . "]' value='" . $row["end_date"] . "'></td>";
+        echo "<td class='td_pets " . $status_class . " seventeen_none_display'>" . $status_text . "</td>";
         echo "</tr>";
     }
     echo "</table>";
-    echo "<div class='save_button'>
-            <button type='submit' name='save_changes'>Сохранить изменения</button>
+    echo "<div class='save_button seventeen_none_display'>
+            <button type='submit' name='save_changes' >Сохранить изменения</button>
           </div>";
     echo "</form>";
 } else {

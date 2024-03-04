@@ -53,11 +53,11 @@ if ($result->num_rows > 0) {
     echo "<table class='table_pets-table' border='0'>";
     echo "<tr class='tr_pets'>
     <th>Имя</th>
-    <th>Порода</th>
-    <th>Дата рождения</th>
-    <th>Возраст</th>
+    <th class='breed_pets'>Порода</th>
+    <th class='birthsday_pets'>Дата рождения</th>
+    <th class='age_pets'>Возраст</th>
     <th>Цели тренировок</th>
-    <th>Особенности</th>
+    <th class='features_pets'>Особенности</th>
     </tr>";
     while($row = $result->fetch_assoc()) {
         // Рассчитываем возраст питомца
@@ -68,11 +68,11 @@ if ($result->num_rows > 0) {
 
         echo "<tr>";
         echo "<td class='td_pets'>" . $row["name"] . "</td>";
-        echo "<td class='td_pets'>" . $row["breed"] . "</td>";
-        echo "<td class='td_pets'>" . $row["birth"] . "</td>";
-        echo "<td class='td_pets'>" . $age_str . "</td>";
+        echo "<td class='td_pets breed_pets'>" . $row["breed"] . "</td>";
+        echo "<td class='td_pets birthsday_pets'>" . $row["birth"] . "</td>";
+        echo "<td class='td_pets age_pets'>" . $age_str . "</td>";
         echo "<td class='td_pets'>" . $row["training_goals"] . "</td>";
-        echo "<td class='td_pets'>" . $row["features"] . "</td>";
+        echo "<td class='td_pets features_pets'>" . $row["features"] . "</td>";
         echo "</tr>";
     }
     echo "</table>";

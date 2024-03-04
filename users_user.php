@@ -49,23 +49,23 @@ if ($result->num_rows > 0) {
     
     echo "<table class='table_pets-table' border='0'>";
     echo "<tr class='tr_pets'>
-    <th>Фото</th>
+    <th class='phohtoTable_user'>Фото</th>
     <th>Имя</th>
-    <th>Дата рождения</th>
-    <th>Опыт</th>
+    <th class='dateBirth_user'>Дата рождения</th>
+    <th class='Experience_users'>Опыт</th>
     <th>Номер телефона</th>
-    <th>Адрес</th>
+    <th class='adress_user'>Адрес</th>
     </tr>";
     while($row = $result->fetch_assoc()) {
         echo "<tr>";
         // Проверяем наличие фотографии
         $photo_path = empty($row["PhotoPath"]) ? "img/default_photo.jpg" : $row["PhotoPath"];
-        echo "<td class='td_pets'><img src='" . $photo_path . "' alt='Фото кинолога' class='user_photo' style='width: 100px; height: 100px;'></td>";
+        echo "<td class='td_pets phohtoTable_user'><img src='" . $photo_path . "' alt='Фото кинолога' class='user_photo'></td>";
         echo "<td class='td_pets'>" . $row["Name"] . "</td>";
-        echo "<td class='td_pets'>" . $row["DateOfBirth"] . "</td>";
-        echo "<td class='td_pets'>" . $row["Experience"] .' лет' . "</td>";
+        echo "<td class='td_pets dateBirth_user'>" . $row["DateOfBirth"] . "</td>";
+        echo "<td class='td_pets Experience_users'>" . $row["Experience"] .' лет' . "</td>";
         echo "<td class='td_pets'>" . $row["PhoneNumber"] . "</td>";
-        echo "<td class='td_pets'>" . $row["Address"] . "</td>";
+        echo "<td class='td_pets adress_user'>" . $row["Address"] . "</td>";
         echo "</tr>";
     }
     echo "</table>";

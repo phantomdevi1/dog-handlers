@@ -265,6 +265,7 @@ body {
 /* users */
 .user_photo {
   cursor: pointer;
+  width: 100px;
 }
 .user_photo:hover {
   transform: scale(3);
@@ -326,4 +327,125 @@ body {
 }
 .non_work {
   font-size: 50px;
+}
+
+@media screen and (width < 1910px) {
+  .admin_header img {
+    display: none;
+  }
+}
+@media screen and (width < 1848px) {
+  .pets_content {
+    width: 90%;
+  }
+}
+@media screen and (width < 1300px) {
+  .pets_content {
+    width: 100%;
+  }
+  .tr_pets {
+    font-size: 17px;
+  }
+  .td_pets {
+    font-size: 17px;
+  }
+}
+@media screen and (width < 1050px) {
+  .admin_home-content,
+  .new_pet_content {
+    width: 85%;
+  }
+}
+
+@media screen and (width < 830px) {
+  .breed_pets {
+    display: none;
+  }
+}
+@media screen and (width < 790px) {
+  .phohtoTable_user {
+    display: none;
+  }
+}
+
+@media screen and (width < 750px) {
+  .seventeen_none_display {
+    display: none;
+  }
+}
+@media screen and (width < 730px) {
+  .admin_header {
+    height: 300px;
+    flex-direction: column;
+  }
+  .toolbar {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .admin_header p {
+    margin: 0 auto;
+  }
+  .btn_href-pets {
+    font-size: 30px;
+    width: 200px;
+  }
+  .birthsday_pets {
+    display: none;
+  }
+  .task_container-home {
+    width: 80%;
+  }
+  .date_namepet {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+@media screen and (width < 650px) {
+  .dateBirth_user,
+  .adress_user {
+    display: none;
+  }
+  .age_pets {
+    display: none;
+  }
+}
+
+@media screen and (width < 501px) {
+  .auth_block {
+    width: 95%;
+  }
+  .title_content {
+    font-size: 60px;
+  }
+  .date_new_task {
+    flex-direction: column;
+  }
+  .startdate_new_task {
+    margin: 0 auto;
+  }
+  .enddate_new_task {
+    margin: 0 auto;
+  }
+  .features_pets {
+    display: none;
+  }
+  .task_container-home {
+    width: 90%;
+  }
+}
+
+@media screen and (width < 401px) {
+  .fourteen_none_display {
+    display: none;
+  }
+  .task_container-home {
+    width: 85%;
+    padding: 0 auto;
+  }
+}
+
+@media screen and (width < 382px) {
+  .Experience_users {
+    display: none;
+  }
 }
