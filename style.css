@@ -10,6 +10,27 @@ body {
   font-family: "Amatic SC";
   width: 100%;
 }
+.username {
+  cursor: pointer;
+}
+.username:hover + .logout_block {
+  display: block;
+}
+.logout_block button {
+  background-color: #f92c85;
+  font-size: 30px;
+  padding: 5px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-family: "Amatic SC";
+  width: 80px;
+  margin-top: 10px;
+}
+.logout_block button:hover {
+  background-color: red;
+}
 
 .auth_block {
   display: flex;
@@ -248,4 +269,42 @@ body {
   border: none;
   border-radius: 10px;
   text-align: center;
+}
+
+/* home */
+.task_container-home {
+  width: 95%;
+  min-height: 300px;
+  background-color: #5ebec4;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 20px;
+  margin-bottom: 50px;
+  font-family: "Courier New", Courier, monospace;
+}
+.date_namepet {
+  display: flex;
+}
+.date_start-home,
+.date_end-home {
+  font-size: 30px;
+}
+.name_pet-home {
+  font-size: 40px;
+  font-family: "Amatic SC";
+  font-weight: 700;
+}
+.task-task_container {
+  margin-top: 5%;
+  font-size: 30px;
+}
+.pet_features-task {
+  margin-top: 5%;
+  font-size: 30px;
+}
+.task_completed {
+  margin-top: 10%;
+}
+.non_work {
+  font-size: 50px;
 }

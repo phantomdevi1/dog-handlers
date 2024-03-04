@@ -3,8 +3,8 @@ session_start();
 
 // Проверяем, авторизован ли пользователь
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {    
-    header("Location: login.php");
-    exit;
+  header("Location: index.php");
+  exit;
 }
 ?>
 
@@ -29,6 +29,11 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <img src="img/logo.svg" alt="">
     <p class="username"><?php echo $_SESSION['username']; ?></p>
   </header>
+  <div class="logout_block" style="display: none; margin-right: 10px; text-align: right;">
+        <form method="post">
+            <button type="submit" name="logout">Выйти</button>
+        </form>
+    </div>
     <div class="pets_content">
     <p class="title_content">
     Кинологи
@@ -84,5 +89,23 @@ $conn->close();
 
     </div>
     </div>
+    <script>
+    document.querySelector('.username').addEventListener('click', function() {
+        document.querySelector('.logout_block').style.display = 'block';
+    });
+</script>
   </body>
 </html>
+<?php
+if(isset($_POST['logout'])){
+    // Очищаем сессию
+    $_SESSION = array();
+
+    // Уничтожаем сессию
+    session_destroy();
+
+    // Перенаправляем пользователя на index.php
+    header("Location: index.php");
+    exit;
+}
+?>

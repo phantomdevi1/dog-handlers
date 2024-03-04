@@ -20,13 +20,11 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 </head>
 <body>
   <header class="admin_header">
-    <div class="toolbar">
-      <a href="pets.php">Питомцы</a>
+  <div class="toolbar">
+      <a href="pets_user.php">Питомцы</a>
       <a href="users.php">Кинологи</a>
-      <a href="tasks.php">Задания</a>
-      <a href="admin_home.php">Дать задание</a>
+      <a href="home.php">Задания</a>
     </div>
-    <img src="img/logo.svg" alt="">
     <p class="username"><?php echo $_SESSION['username']; ?></p>
   </header>
   <div class="logout_block" style="display: none; margin-right: 10px; text-align: right;">
@@ -39,7 +37,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     Питомцы
     </p>
     <hr style="border: 1px solid black;">
-    <button class="btn_href-pets" onclick="document.location='new_pet.php'">Добавить</button>
     <div class="table_pets">
     <?php
 $servername = "localhost";

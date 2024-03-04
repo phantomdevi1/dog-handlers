@@ -28,11 +28,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows == 1) {
         // Пользователь найден
-        $row = $result->fetch_assoc();
+        $row = $result->fetch_assoc();        
+        $_SESSION['user_id'] = $row['UserID'];
         if ($row['IsAdmin'] == 1) {
             // Администратор
             $_SESSION['loggedin'] = true;
-            $_SESSION['username'] = $row['Name']; 
+            $_SESSION['username'] = $row['Name'];  
             header("Location: admin_home.php"); 
         } else {
             // Пользователь без прав администратора

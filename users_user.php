@@ -14,19 +14,17 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Питомцы</title>  
+  <title>Кинологи</title>  
   <link rel="stylesheet" href="style.css" />
   <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
 </head>
 <body>
   <header class="admin_header">
-    <div class="toolbar">
-      <a href="pets.php">Питомцы</a>
+  <div class="toolbar">
+      <a href="pets_user.php">Питомцы</a>
       <a href="users.php">Кинологи</a>
-      <a href="tasks.php">Задания</a>
-      <a href="admin_home.php">Дать задание</a>
+      <a href="home.php">Задания</a>
     </div>
-    <img src="img/logo.svg" alt="">
     <p class="username"><?php echo $_SESSION['username']; ?></p>
   </header>
   <div class="logout_block" style="display: none; margin-right: 10px; text-align: right;">
@@ -36,10 +34,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     </div>
     <div class="pets_content">
     <p class="title_content">
-    Питомцы
+    Кинологи
     </p>
     <hr style="border: 1px solid black;">
-    <button class="btn_href-pets" onclick="document.location='new_pet.php'">Добавить</button>
     <div class="table_pets">
     <?php
 $servername = "localhost";
@@ -53,34 +50,30 @@ if ($conn->connect_error) {
 }
 
 
-$sql = "SELECT `id`, `name`, `breed`, `birth`, `training_goals`, `features` FROM `Dogs`";
+$sql = "SELECT `Name`, `DateOfBirth`, `Experience`, `PhoneNumber`, `Address`, `PhotoPath`, `IsAdmin`, `Login`, `Password` FROM `Users`";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     
     echo "<table class='table_pets-table' border='0'>";
     echo "<tr class='tr_pets'>
+    <th>Фото</th>
     <th>Имя</th>
-    <th>Порода</th>
     <th>Дата рождения</th>
-    <th>Возраст</th>
-    <th>Цели тренировок</th>
-    <th>Особенности</th>
+    <th>Опыт</th>
+    <th>Номер телефона</th>
+    <th>Адрес</th>
     </tr>";
     while($row = $result->fetch_assoc()) {
-        // Рассчитываем возраст питомца
-        $birth_date = new DateTime($row["birth"]);
-        $current_date = new DateTime();
-        $age = $birth_date->diff($current_date);
-        $age_str = $age->y . " лет, " . $age->d . " дней";
-
         echo "<tr>";
-        echo "<td class='td_pets'>" . $row["name"] . "</td>";
-        echo "<td class='td_pets'>" . $row["breed"] . "</td>";
-        echo "<td class='td_pets'>" . $row["birth"] . "</td>";
-        echo "<td class='td_pets'>" . $age_str . "</td>";
-        echo "<td class='td_pets'>" . $row["training_goals"] . "</td>";
-        echo "<td class='td_pets'>" . $row["features"] . "</td>";
+        // Проверяем наличие фотографии
+        $photo_path = empty($row["PhotoPath"]) ? "img/default_photo.jpg" : $row["PhotoPath"];
+        echo "<td class='td_pets'><img src='" . $photo_path . "' alt='Фото кинолога' class='user_photo' style='width: 100px; height: 100px;'></td>";
+        echo "<td class='td_pets'>" . $row["Name"] . "</td>";
+        echo "<td class='td_pets'>" . $row["DateOfBirth"] . "</td>";
+        echo "<td class='td_pets'>" . $row["Experience"] .' лет' . "</td>";
+        echo "<td class='td_pets'>" . $row["PhoneNumber"] . "</td>";
+        echo "<td class='td_pets'>" . $row["Address"] . "</td>";
         echo "</tr>";
     }
     echo "</table>";
