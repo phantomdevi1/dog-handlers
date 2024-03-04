@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-// Подключение к базе данных
-$db_host = 'localhost'; // Хост базы данных
-$db_username = 'root'; // Имя пользователя базы данных
-$db_password = ''; // Пароль пользователя базы данных
-$db_name = 'dog_handlers'; // Имя базы данных
+
+$db_host = 'localhost';
+$db_username = 'root';
+$db_password = ''; 
+$db_name = 'dog_handlers'; 
 
 $conn = new mysqli($db_host, $db_username, $db_password, $db_name);
 
@@ -18,12 +18,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = $_POST['login'];
     $password = $_POST['password'];
 
-    // Защита от SQL инъекций
+   
     $login = mysqli_real_escape_string($conn, $login);
     $password = mysqli_real_escape_string($conn, $password);
 
-    // Хеширование пароля (если используется хеширование)
-    // $password = md5($password);
 
     $sql = "SELECT * FROM Users WHERE Login = '$login' AND Password = '$password'";
     $result = $conn->query($sql);
@@ -34,13 +32,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($row['IsAdmin'] == 1) {
             // Администратор
             $_SESSION['loggedin'] = true;
-            $_SESSION['username'] = $login;
+            $_SESSION['username'] = $row['Name']; 
             header("Location: admin_home.php"); 
         } else {
             // Пользователь без прав администратора
             $_SESSION['loggedin'] = true;
-            $_SESSION['username'] = $login;
-            header("Location: home.php"); // Перенаправляем на обычную страницу пользователя
+            $_SESSION['username'] = $row['Name'];
+            header("Location: home.php");
         }
     } else {
         echo "Неверный логин или пароль.";
@@ -49,6 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

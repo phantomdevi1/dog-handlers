@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+// Проверяем, авторизован ли пользователь
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {    
+    header("Location: login.php");
+    exit;
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +27,7 @@
       <a href="admin_home.php">Дать задание</a>
     </div>
     <img src="img/logo.svg" alt="">
-    <p class="username">Андрей</p>
+    <p class="username"><?php echo $_SESSION['username']; ?></p>
   </header>
     <div class="new_pet_content">
     <p class="title_content">

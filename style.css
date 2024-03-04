@@ -229,3 +229,23 @@ body {
 .user_photo:hover {
   transform: scale(3);
 }
+
+/* new user */
+.new_user-form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  justify-content: center;
+}
+.new_user-form p {
+  margin-top: 30px;
+}
+.new_user-form input {
+  width: 80%;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+}
