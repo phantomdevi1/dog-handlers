@@ -135,6 +135,25 @@ body {
   justify-content: center;
   text-align: center;
 }
+.save_button {
+  padding: 50px;
+  margin-bottom: 100px;
+}
+.save_button button {
+  background-color: #f92c85;
+  font-size: 30px;
+  font-family: "Amatic SC";
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  width: 80%;
+}
+.save_button button:hover {
+  background-color: #fff;
+  color: #f92c85;
+}
 .new_task-form p {
   margin-top: 15px;
 }

@@ -30,7 +30,7 @@ $result = $conn->query($sql);
 <header class="admin_header">
     <div class="toolbar">
       <a href="pets_user.php">Питомцы</a>
-      <a href="users.php">Кинологи</a>
+      <a href="users_user.php">Кинологи</a>
       <a href="home.php">Задания</a>
     </div>   
     <p class="username"><?php echo $_SESSION['username']; ?></p>

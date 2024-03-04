@@ -1,13 +1,14 @@
 <?php
 session_start();
 
+include 'config.php';
+
 // Проверяем, авторизован ли пользователь
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {    
-  header("Location: index.php");
-  exit;
+    header("Location: index.php");
+    exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,6 +60,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     
+    echo "<form action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "' method='post'>";
     echo "<table class='table_pets-table' border='0'>";
     echo "<tr class='tr_pets'>
     <th>Кинолог</th>
@@ -106,11 +108,15 @@ if ($result->num_rows > 0) {
         echo "<td class='td_pets'>" . $dog_name . "</td>";
         echo "<td class='td_pets'>" . $row["task"] . "</td>";
         echo "<td class='td_pets'>" . $row["start_date"] . "</td>";
-        echo "<td class='td_pets'><input type='date' value='" . $row["end_date"] . "'></td>";
+        echo "<td class='td_pets'><input type='date' name='end_date[" . $row['dog_id'] . "]' value='" . $row["end_date"] . "'></td>";
         echo "<td class='td_pets " . $status_class . "'>" . $status_text . "</td>";
         echo "</tr>";
     }
     echo "</table>";
+    echo "<div class='save_button'>
+            <button type='submit' name='save_changes'>Сохранить изменения</button>
+          </div>";
+    echo "</form>";
 } else {
     echo "0 результатов";
 }
@@ -138,5 +144,21 @@ if(isset($_POST['logout'])){
     // Перенаправляем пользователя на index.php
     header("Location: index.php");
     exit;
+}
+if(isset($_POST['save_changes'])){
+    include 'config.php'; // Подключаем файл с настройками базы данных
+    
+    // Подготовка и выполнение SQL-запроса на обновление даты окончания задачи
+    foreach($_POST['end_date'] as $taskId => $endDate) {
+        $taskId = mysqli_real_escape_string($conn, $taskId);
+        $endDate = mysqli_real_escape_string($conn, $endDate);
+        $sql = "UPDATE Training SET end_date = '$endDate' WHERE dog_id = '$taskId'";
+        if ($conn->query($sql) !== TRUE) {
+            echo "Ошибка при обновлении даты окончания задачи: " . $conn->error;
+        }
+    }
+    
+    // Закрываем соединение с базой данных
+    $conn->close();
 }
 ?>
