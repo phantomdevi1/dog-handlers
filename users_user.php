@@ -39,15 +39,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <hr style="border: 1px solid black;">
     <div class="table_pets">
     <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "dog_handlers";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    include 'config.php';
 
 
 $sql = "SELECT `Name`, `DateOfBirth`, `Experience`, `PhoneNumber`, `Address`, `PhotoPath`, `IsAdmin`, `Login`, `Password` FROM `Users`";

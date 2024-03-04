@@ -44,15 +44,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         <select name="handler_id" id="" class="select_new_task">
           <?php
           // Подключение к базе данных для получения данных кинологов
-          $servername = "localhost";
-          $username = "root";
-          $password = "";
-          $dbname = "dog_handlers";
+          include 'config.php';
 
-          $conn = new mysqli($servername, $username, $password, $dbname);
-          if ($conn->connect_error) {
-              die("Connection failed: " . $conn->connect_error);
-          }
 
           // Запрос для получения данных кинологов
           $sql = "SELECT `UserID`, `Name` FROM `Users`";

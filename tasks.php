@@ -52,16 +52,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <button class="btn_href-pets" onclick="document.location='admin_home.php'">Добавить</button>
     <div class="table_pets">
     <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "dog_handlers";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
+    include 'config.php';
 
 $sql = "SELECT `dog_id`, `handler_id`, `task`, `start_date`, `end_date`, `status` FROM `Training`";
 $result = $conn->query($sql);

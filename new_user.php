@@ -63,19 +63,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     </div>
     </div>
     <?php
-    // PHP код для обработки формы и добавления кинолога в базу данных
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "dog_handlers";
-
-    // Создание подключения к базе данных
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Проверка соединения
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    include 'config.php';
 
     // Проверка, была ли отправлена форма
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
